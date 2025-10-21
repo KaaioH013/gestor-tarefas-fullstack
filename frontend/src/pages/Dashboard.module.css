@@ -1,0 +1,128 @@
+/* Dashboard.module.css */
+
+.wrapper {
+  width: 100%;
+  max-width: 900px; /* Mais largo que o login */
+  margin: 2rem auto; /* Espaço em cima/baixo, centrado */
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  margin: 0;
+  color: #333;
+}
+
+/* Botão de Sair (Logout) */
+.logoutButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #dc3545; /* Vermelho */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: #c82333;
+}
+
+/* Formulário de Novo Projeto */
+.formNovoProjeto {
+  margin-bottom: 2rem;
+}
+
+.formNovoProjeto input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.formNovoProjeto button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* Azul */
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.formNovoProjeto button:hover {
+  background-color: #0056b3;
+}
+
+/* Lista de Projetos */
+.listaProjetos {
+  list-style: none;
+  padding-left: 0;
+}
+
+.projetoItem {
+  margin: 10px 0;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fdfdfd;
+}
+
+.projetoVistaNormal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projetoNome {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #0056b3;
+  cursor: pointer;
+}
+
+.projetoNome:hover {
+  text-decoration: underline;
+}
+
+.projetoBotoes button {
+  margin-left: 10px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #f7f7f7;
+}
+
+.projetoBotoes button:hover {
+  background: #e0e0e0;
+}
+
+/* Formulário de Edição de Projeto */
+.formEditarProjeto input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.formEditarProjeto button {
+  margin-right: 5px;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}

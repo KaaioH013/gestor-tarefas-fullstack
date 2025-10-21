@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// O 'useNavigate' JÁ NÃO É PRECISO AQUI
 import { Link } from 'react-router-dom';
+// 1. Importar o nosso ficheiro de estilos
+import styles from './Auth.module.css'; 
 
-// 1. Receber o 'setAuth' que o App.jsx nos "passou"
 function Login({ setAuth }) { 
   const [formData, setFormData] = useState({
     email: '',
@@ -11,9 +11,6 @@ function Login({ setAuth }) {
   });
   const [mensagem, setMensagem] = useState('');
   
-  // O 'navigate' já não é preciso
-  // const navigate = useNavigate();
-
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -21,67 +18,65 @@ function Login({ setAuth }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     setMensagem('');
-
     try {
       const res = await axios.post(
         'http://localhost:5000/auth/login',
         formData
       );
       
-      const token = res.data.token;
-      localStorage.setItem('token', token);
-      
-      // 2. [MUDANÇA] Em vez de redirecionar,
-      //    chamamos o setAuth(true).
-      //    Isto "avisa" o App.jsx que estamos logados.
-      //    O App.jsx vai re-renderizar e fazer o
-      //    redirecionamento por nós!
+      localStorage.setItem('token', res.data.token);
       setAuth(true);
-      setMensagem('Login bem-sucedido!'); // (Esta mensagem mal se vai ver)
-
-      // 3. Já não precisamos do 'setTimeout' nem do 'navigate'
+      setMensagem('Login bem-sucedido!'); 
       
     } catch (err) {
       localStorage.removeItem('token');
-      setAuth(false); // Avisa a App que o login falhou
+      setAuth(false);
       setMensagem(err.response.data || 'Erro no login');
     }
   };
 
+  // 2. Aplicar os estilos (classes) ao nosso JSX
   return (
-    <div>
-      <h1>Página de Login</h1>
-      {/* O resto do formulário fica igual */}
-      <form onSubmit={onSubmit}>
-        {/* ... inputs ... */}
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={onChange}
-            required
-          />
-        </div>
-        <button type="submit">Entrar</button>
-      </form>
-      
-      {mensagem && <p style={{ color: mensagem.includes('sucesso') ? 'green' : 'red' }}>{mensagem}</p>}
+    <div className={styles.container}>
+      <div className={styles.formWrapper}>
+        <h1>Entrar na Conta</h1>
+        
+        <form onSubmit={onSubmit}>
+          <div className={styles.formGroup}>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={onChange}
+              required
+              className={styles.input} 
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={onChange}
+              required
+              className={styles.input}
+            />
+          </div>
+          <button type="submit" className={styles.button}>Entrar</button>
+        </form>
+        
+        {mensagem && (
+          <p className={`${styles.feedback} ${mensagem.includes('sucesso') ? styles.feedbackSuccess : styles.feedbackError}`}>
+            {mensagem}
+          </p>
+        )}
 
-      <p>
-        Não tem conta? <Link to="/registo">Crie uma aqui</Link>
-      </p>
+        <p className={styles.link}>
+          Não tem conta? <Link to="/registo">Crie uma aqui</Link>
+        </p>
+      </div>
     </div>
   );
 }
