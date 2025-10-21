@@ -83,14 +83,14 @@ Executa o script SQL que está em backend/database.sql dentro do teu pgAdmin (us
 Na pasta backend/, cria um ficheiro chamado .env.
 
 Copia o conteúdo do .env.example (ou cola isto) para dentro do .env e preenche com os teus dados:
-
+```bash
 DB_USER=postgres
 DB_HOST=localhost
 DB_DATABASE=gestor_tarefas
 DB_PASSWORD=A_TUA_PASSWORD_DO_POSTGRES
 DB_PORT=5432
 JWT_SECRET=oMeuSegredoSuperSecreto12345
-
+```
 Finalmente, liga o servidor do back-end (ele vai correr em http://localhost:5000):
 ```bash
 npm run server
