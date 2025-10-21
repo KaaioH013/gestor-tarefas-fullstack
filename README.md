@@ -66,6 +66,7 @@ Para correr este projeto na tua máquina, vais precisar de ter o **Node.js** e o
 ```bash
 git clone [https://github.com/teu-nome/gestor-tarefas-fullstack.git](https://github.com/teu-nome/gestor-tarefas-fullstack.git)
 cd gestor-tarefas-fullstack
+```
 
 **2. Configurar e Ligar o Back-End (O "Cérebro")**
 ```bash
@@ -74,7 +75,7 @@ cd backend
 
 # Instala as dependências
 npm install
-
+```
 Cria a tua base de dados PostgreSQL. Podes usar o pgAdmin. Cria uma base de dados chamada gestor_tarefas.
 
 Executa o script SQL que está em backend/database.sql dentro do teu pgAdmin (usando a "Query Tool"). Isto vai criar as tabelas utilizadores, projetos, e tarefas.
@@ -93,7 +94,7 @@ JWT_SECRET=oMeuSegredoSuperSecreto12345
 Finalmente, liga o servidor do back-end (ele vai correr em http://localhost:5000):
 ```bash
 npm run server
-
+```
 **3. Configurar e Ligar o Front-End (O "Rosto")**
 ```bash
 # (Se estiveres em 'backend/', escreve 'cd ..')
@@ -101,9 +102,9 @@ cd frontend
 
 # Instala as dependências
 npm install
-
+```
 Liga o servidor de desenvolvimento do front-end (ele vai correr em http://localhost:5173 ou similar):
 ```bash
 npm run dev
-
+```
 Pronto! Agora podes abrir http://localhost:5173 no teu browser e usar a aplicação!
